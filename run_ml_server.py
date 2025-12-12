@@ -1,15 +1,15 @@
 from waitress import serve
 from app import app
+import os
 
 if __name__ == '__main__':
-  print("Running ML Server for AI Learning Insight with Waitress...")
-  print("Serving on http://localhost:5000")
-  
+  print("Running ML Server for AI Learning Insight with Waitress...")  
+  port = int(os.environ.get("PORT", 5000))
+  print(f"Starting Waitress server on 0.0.0.0:{port}")
+    
   serve(
     app,
-    host='localhost',
-    port=5000,
-    threads=4,
-    connection_limit=1000,
-    channel_timeout=60
-  )
+    host='0.0.0.0',
+    port=port,
+    threads=4 
+    )
